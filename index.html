@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Serge &amp; Andrea · Wedding Gallery</title>
 <meta name="description" content="The wedding gallery of Serge and Andrea">
+<meta name="theme-color" content="#141414">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Serge &amp; Andrea">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -124,6 +132,15 @@ footer p{margin-top:10px;font-size:11px;letter-spacing:.28em;text-transform:uppe
   .lb-title{display:none}
   .lb-top{grid-template-columns:1fr 1fr}
 }
+
+.install{margin-top:18px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:4px;display:none}
+.install.show{display:inline-block}
+.iosm{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center;padding:16px}
+.iosm.open{display:flex}
+.iosm .sh{background:var(--paper);color:var(--ink);max-width:420px;width:100%;padding:28px;text-align:center;font-family:var(--sans)}
+.iosm h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:12px}
+.iosm p{font-size:14px;line-height:1.8}
+.iosm button{margin-top:18px;border:1px solid var(--ink);padding:12px 30px;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -135,6 +152,7 @@ footer p{margin-top:10px;font-size:11px;letter-spacing:.28em;text-transform:uppe
     <h1 class="names">Serge<span class="amp">&amp;</span>Andrea</h1>
     <div class="rule"></div>
     <a class="cover-cta" href="#gallery" id="enter">View Gallery</a>
+    <button class="install" id="installBtn">Add to Home Screen</button>
   </div>
   <div class="scroll-hint"></div>
 </section>
@@ -278,6 +296,17 @@ function fromHash(){
   go(0,0,false);
 }
 fromHash();
+</script>
+<div class="iosm" id="iosm"><div class="sh"><h3>Add to Home Screen</h3><p>Open this page in Safari, tap the Share button, then choose Add to Home Screen.</p><button id="iosOk">OK</button></div></div>
+<script>
+(function(){var d=null,b=document.getElementById('installBtn'),m=document.getElementById('iosm');
+var sa=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+if(!sa&&ios)b.classList.add('show');
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();d=e;if(!sa)b.classList.add('show')});
+b.onclick=function(){if(d){d.prompt();d=null;b.classList.remove('show')}else m.classList.add('open')};
+document.getElementById('iosOk').onclick=function(){m.classList.remove('open')};
+if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});})();
 </script>
 </body>
 </html>
