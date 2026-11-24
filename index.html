@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="Serge &amp; Andrea">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#141414;
@@ -27,6 +27,8 @@
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Jost",Helvetica,Arial,sans-serif;
   --gap:10px;
+  --gold:#C2A36B;
+  --script:"Pinyon Script",cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -142,16 +144,59 @@ footer p{margin-top:10px;font-size:11px;letter-spacing:.28em;text-transform:uppe
 .iosm h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:12px}
 .iosm p{font-size:14px;line-height:1.8}
 .iosm button{margin-top:18px;border:1px solid var(--ink);padding:12px 30px;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+
+/* WEDDING TOUCHES */
+.frame{position:absolute;inset:22px;z-index:2;border:1px solid rgba(255,255,255,.45);pointer-events:none}
+.frame::after{content:"";position:absolute;inset:6px;border:1px solid rgba(255,255,255,.22)}
+.frame svg{position:absolute;width:104px;height:104px;color:rgba(255,255,255,.8)}
+.frame .c1{left:-1px;top:-1px}.frame .c2{right:-1px;top:-1px;transform:scaleX(-1)}
+.frame .c3{left:-1px;bottom:-1px;transform:scaleY(-1)}.frame .c4{right:-1px;bottom:-1px;transform:scale(-1,-1)}
+.mono{width:84px;height:84px;border:1px solid rgba(255,255,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;font-family:var(--serif);font-size:26px;letter-spacing:.06em}
+.mono::before{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.35);border-radius:50%}
+.mono i{font-family:var(--script);font-style:normal;font-size:24px;margin:0 3px;letter-spacing:0}
+.names .amp{font-family:var(--script);font-style:normal;text-transform:none;font-size:.62em;vertical-align:.08em}
+.fl{display:block;width:200px;height:34px;margin:4px auto 24px;color:rgba(255,255,255,.85)}
+.date{font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:.08em;margin:-10px 0 26px;opacity:.9}
+.brand .t i{font-family:var(--script);font-style:normal;font-size:1.1em;color:var(--gold)}
+.intro .orn{display:block}
+.intro .orn svg{width:170px;height:28px;color:var(--gold)}
+.intro .k{color:var(--gold)}
+footer{position:relative;padding:60px 20px 64px}
+footer .mono{border-color:var(--gold);color:var(--ink);margin:0 auto 20px}
+footer .mono::before{border-color:rgba(194,163,107,.45)}
+footer .mono i{color:var(--gold)}
+footer .t i{font-family:var(--script);font-size:1.15em;color:var(--gold)}
+footer .thanks{font-family:var(--script);font-size:34px;color:var(--gold);margin-top:14px;letter-spacing:0;text-transform:none}
+footer .fl2{display:block;width:170px;height:28px;margin:18px auto 0;color:var(--gold)}
+.tile{box-shadow:0 0 0 1px rgba(194,163,107,.0)}
+@media (max-width:760px){.frame{inset:12px}.frame svg{width:64px;height:64px}.mono{width:70px;height:70px;font-size:22px}.fl{width:160px}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="flourish" viewBox="0 0 240 40"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+<path d="M120 20 C100 6 80 6 66 14 C54 21 40 22 28 16 C20 12 12 14 6 20"/>
+<path d="M120 20 C140 6 160 6 174 14 C186 21 200 22 212 16 C220 12 228 14 234 20"/>
+<path d="M120 20 C104 30 88 32 76 27"/><path d="M120 20 C136 30 152 32 164 27"/>
+<path d="M66 14 C62 7 66 2 72 3 C70 8 68 11 66 14Z"/><path d="M174 14 C178 7 174 2 168 3 C170 8 172 11 174 14Z"/>
+<path d="M44 20 C40 26 42 31 48 32 C48 27 46 23 44 20Z"/><path d="M196 20 C200 26 198 31 192 32 C192 27 194 23 196 20Z"/>
+</g><g fill="currentColor"><circle cx="120" cy="20" r="2.6"/><circle cx="111" cy="20" r="1.2"/><circle cx="129" cy="20" r="1.2"/><circle cx="6" cy="20" r="1.4"/><circle cx="234" cy="20" r="1.4"/></g></symbol>
+<symbol id="corner" viewBox="0 0 80 80"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+<path d="M4 76 V22 C4 12 12 4 22 4 H76"/><path d="M12 76 V28 C12 19 19 12 28 12 H76"/>
+<path d="M22 22 C30 14 40 16 40 26 C40 34 30 36 26 30 C23 26 27 22 31 24"/>
+<path d="M40 26 C46 20 54 20 58 24"/><path d="M26 40 C20 46 20 54 24 58"/>
+</g><circle cx="22" cy="22" r="2" fill="currentColor"/></symbol>
+</defs></svg>
 
 <section class="cover" id="top">
   <div id="slides"></div>
+  <div class="frame"><svg class="c1"><use href="#corner"/></svg><svg class="c2"><use href="#corner"/></svg><svg class="c3"><use href="#corner"/></svg><svg class="c4"><use href="#corner"/></svg></div>
   <div class="cover-inner">
+    <div class="mono">S<i>&amp;</i>A</div>
     <div class="eyebrow">The Wedding Gallery</div>
     <h1 class="names">Serge<span class="amp">&amp;</span>Andrea</h1>
-    <div class="rule"></div>
+    <svg class="fl"><use href="#flourish"/></svg>
     <a class="cover-cta" href="#gallery" id="enter">View Gallery</a>
     <button class="install" id="installBtn">Add to Home Screen</button>
   </div>
@@ -169,7 +214,7 @@ footer p{margin-top:10px;font-size:11px;letter-spacing:.28em;text-transform:uppe
     <div class="k" id="kChapter"></div>
     <h2 id="hSet"></h2>
     <div class="count" id="count"></div>
-    <div class="orn"><span></span><b></b><span></span></div>
+    <div class="orn"><svg><use href="#flourish"/></svg></div>
   </div>
   <div class="grid" id="grid"></div>
   <div class="sentinel" id="sentinel"></div>
@@ -177,8 +222,11 @@ footer p{margin-top:10px;font-size:11px;letter-spacing:.28em;text-transform:uppe
 </main>
 
 <footer>
+  <div class="mono">S<i>&amp;</i>A</div>
   <div class="t">Serge<i>&amp;</i>Andrea</div>
-  <p>With love, thank you for celebrating with us</p>
+  <div class="thanks">Thank you</div>
+  <p>for celebrating with us</p>
+  <svg class="fl2"><use href="#flourish"/></svg>
   <button class="totop" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Back to top</button>
 </footer>
 
